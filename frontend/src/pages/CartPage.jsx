@@ -17,10 +17,10 @@ function CartPage() {
 
     }, [])
 
-    const removeFromCart = (productId) => {
+    const removeFromCart = (itemId) => {
 
         const updatedCart = cartItems.filter(
-            (item) => item.id !== productId
+            (item) => item.id !== itemId
         )
 
         setCartItems(updatedCart)
@@ -44,11 +44,11 @@ function CartPage() {
 
     )
 
-    const increaseQuantity = (productId) => {
+    const increaseQuantity = (itemId) => {
 
         const updatedCart = cartItems.map((item) => {
 
-            if (item.id === productId) {
+            if (item.id === itemId) {
 
                 return {
                     ...item,
@@ -70,11 +70,11 @@ function CartPage() {
 
     }
 
-    const decreaseQuantity = (productId) => {
+    const decreaseQuantity = (itemId) => {
 
         const updatedCart = cartItems.map((item) => {
 
-            if (item.id === productId) {
+            if (item.id === itemId) {
 
                 return {
                     ...item,
@@ -89,7 +89,10 @@ function CartPage() {
 
         setCartItems(updatedCart)
 
-        
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(updatedCart)
+        )
 
     }
 
@@ -99,7 +102,12 @@ function CartPage() {
 
             <Navbar />
 
-            <h1>
+            <h1
+                style={{
+                    textAlign: "center",
+                    marginBottom: "30px"
+                }}
+            >
                 Cart Page
             </h1>
 
@@ -107,11 +115,35 @@ function CartPage() {
 
                 cartItems.map((item) => (
 
-                    <div key={item.id}>
+                    <div
+
+                        key={item.id}
+
+                        style={{
+                            border: "1px solid gray",
+                            padding: "20px",
+                            margin: "20px auto",
+                            width: "350px",
+                            borderRadius: "10px",
+                            textAlign: "center",
+                            backgroundColor: "#1e1e1e"
+                        }}
+
+                    >
 
                         <img
+
                             src={`http://127.0.0.1:8000${item.image}`}
-                            width="150"
+
+                            alt={item.title}
+
+                            style={{
+                                width: "100%",
+                                height: "200px",
+                                objectFit: "cover",
+                                borderRadius: "10px"
+                            }}
+
                         />
 
                         <h2>{item.title}</h2>
@@ -124,6 +156,7 @@ function CartPage() {
                             style={{
                                 display: "flex",
                                 gap: "10px",
+                                justifyContent: "center",
                                 alignItems: "center",
                                 marginBottom: "10px"
                             }}
@@ -159,7 +192,12 @@ function CartPage() {
 
             }
 
-            <h2>
+            <h2
+                style={{
+                    textAlign: "center",
+                    marginTop: "30px"
+                }}
+            >
                 Total Price: ₹ {totalPrice}
             </h2>
 

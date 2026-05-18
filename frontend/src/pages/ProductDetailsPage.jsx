@@ -110,10 +110,9 @@ function ProductDetailsPage() {
             >
 
                 <img
-
-                    src={`http://127.0.0.1:8000${product.image}`}
-
+                    src={`http://127.0.0.1:8000/media/${product.image}`}
                     alt={product.title}
+
 
                     style={{
                         width: "400px",

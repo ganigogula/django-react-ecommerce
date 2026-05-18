@@ -33,6 +33,8 @@ function HomePage() {
         "http://127.0.0.1:8000/api/products/"
       )
 
+      console.log(response.data)
+
       setProducts(response.data)
 
       setLoading(false)
@@ -70,6 +72,11 @@ function HomePage() {
 
     setCartItems(updatedCart)
 
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(updatedCart)
+    )
+
     alert("Product Added To Cart")
 
   }
@@ -96,6 +103,7 @@ function HomePage() {
     )
 
   }
+
   const filteredProducts = products
 
     .filter((product) =>
@@ -112,7 +120,9 @@ function HomePage() {
 
       ||
 
-      product.title === selectedCategory
+      product.title
+        .toLowerCase()
+        .includes(selectedCategory.toLowerCase())
 
     )
 
@@ -198,9 +208,18 @@ function HomePage() {
             Camera
           </option>
 
+          <option value="Headphones">
+            Headphones
+          </option>
+
+          <option value="Shoes">
+            Shoes
+          </option>
+
         </select>
 
       </div>
+
       {
         filteredProducts.length === 0 && (
 
