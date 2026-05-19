@@ -6,13 +6,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
 
-    path("api/users/", include("users.urls")),
+    path('api/users/', include('users.urls')),
 
-    path("api/products/", include("products.urls")),
+    path('api/products/', include('products.urls')),
 
-    path("api/orders/", include("orders.urls")),
+    path('api/orders/', include('orders.urls')),
 
 ]
 
@@ -22,8 +22,12 @@ urlpatterns += static(
 )
 
 urlpatterns += [
+
     re_path(
         r'^.*$',
-        TemplateView.as_view(template_name="index.html")
+        TemplateView.as_view(
+            template_name="index.html"
+        ),
     ),
+
 ]
