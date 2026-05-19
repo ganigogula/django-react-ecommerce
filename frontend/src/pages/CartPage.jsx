@@ -72,20 +72,24 @@ function CartPage() {
 
     const decreaseQuantity = (itemId) => {
 
-        const updatedCart = cartItems.map((item) => {
+        const updatedCart = cartItems
 
-            if (item.id === itemId) {
+            .map((item) => {
 
-                return {
-                    ...item,
-                    quantity: item.quantity - 1
+                if (item.id === itemId) {
+
+                    return {
+                        ...item,
+                        quantity: item.quantity - 1
+                    }
+
                 }
 
-            }
+                return item
 
-            return item
+            })
 
-        }).filter((item) => item.quantity > 0)
+            .filter((item) => item.quantity > 0)
 
         setCartItems(updatedCart)
 
@@ -113,82 +117,97 @@ function CartPage() {
 
             {
 
-                cartItems.map((item) => (
+                cartItems.length === 0 ? (
 
-                    <div
-
-                        key={item.id}
-
+                    <h2
                         style={{
-                            border: "1px solid gray",
-                            padding: "20px",
-                            margin: "20px auto",
-                            width: "350px",
-                            borderRadius: "10px",
-                            textAlign: "center",
-                            backgroundColor: "#1e1e1e"
+                            textAlign: "center"
                         }}
-
                     >
+                        Cart Is Empty
+                    </h2>
 
-                        <img
+                ) : (
 
-                            src={`http://127.0.0.1:8000${item.image}`}
-
-                            alt={item.title}
-
-                            style={{
-                                width: "100%",
-                                height: "200px",
-                                objectFit: "cover",
-                                borderRadius: "10px"
-                            }}
-
-                        />
-
-                        <h2>{item.title}</h2>
-
-                        <p>{item.description}</p>
-
-                        <p>₹ {item.price}</p>
+                    cartItems.map((item) => (
 
                         <div
+
+                            key={item.id}
+
                             style={{
-                                display: "flex",
-                                gap: "10px",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                marginBottom: "10px"
+                                border: "1px solid gray",
+                                padding: "20px",
+                                margin: "20px auto",
+                                width: "350px",
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                backgroundColor: "#1e1e1e"
                             }}
+
                         >
 
-                            <button
-                                onClick={() => decreaseQuantity(item.id)}
-                            >
-                                -
-                            </button>
+                            <img
+                                src={`http://127.0.0.1:8000${item.image}`}
+                                alt={item.title}
+                                style={{
+                                    width: "200px",
+                                    height: "200px",
+                                    objectFit: "cover"
+                                }}
+                            />
 
-                            <span>
-                                Quantity: {item.quantity}
-                            </span>
+                            <h2>{item.title}</h2>
+
+                            <p>{item.description}</p>
+
+                            <p>₹ {item.price}</p>
+
+                            <div
+                                style={{
+                                    display: "flex",
+                                    gap: "10px",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    marginBottom: "10px"
+                                }}
+                            >
+
+                                <button
+                                    onClick={() =>
+                                        decreaseQuantity(item.id)
+                                    }
+                                >
+                                    -
+                                </button>
+
+                                <span>
+                                    Quantity: {item.quantity}
+                                </span>
+
+                                <button
+                                    onClick={() =>
+                                        increaseQuantity(item.id)
+                                    }
+                                >
+                                    +
+                                </button>
+
+                            </div>
 
                             <button
-                                onClick={() => increaseQuantity(item.id)}
+                                onClick={() =>
+                                    removeFromCart(item.id)
+                                }
                             >
-                                +
+                                Remove
                             </button>
 
                         </div>
 
-                        <button
-                            onClick={() => removeFromCart(item.id)}
-                        >
-                            Remove
-                        </button>
+                    ))
 
-                    </div>
-
-                ))
+                )
 
             }
 

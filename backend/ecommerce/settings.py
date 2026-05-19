@@ -9,6 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+
 # INSTALLED APPS
 
 INSTALLED_APPS = [
@@ -39,11 +40,17 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+
     'django.middleware.common.CommonMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -51,11 +58,18 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ecommerce.urls'
 
 
+# TEMPLATES
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+
+        'DIRS': [
+            BASE_DIR / "templates",
+        ],
+
         'APP_DIRS': True,
+
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -107,10 +121,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # MEDIA FILES
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
@@ -139,4 +156,3 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
-CORS_ALLOW_ALL_ORIGINS = True

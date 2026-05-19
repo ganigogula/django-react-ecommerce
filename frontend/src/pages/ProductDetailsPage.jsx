@@ -24,7 +24,7 @@ function ProductDetailsPage() {
         try {
 
             const response = await axios.get(
-                `http://127.0.0.1:8000/api/products/${id}/`
+                `/api/products/${id}/`
             )
 
             setProduct(response.data)
@@ -110,7 +110,7 @@ function ProductDetailsPage() {
             >
 
                 <img
-                    src={`http://127.0.0.1:8000/media/${product.image}`}
+                    src={`/media/${product.image}`}
                     alt={product.title}
 
 

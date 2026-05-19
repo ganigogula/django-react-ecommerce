@@ -30,7 +30,7 @@ function RegisterPage() {
 
         } catch (error) {
 
-            console.log(error.response.data)
+            console.log(error)
 
             alert("Registration Failed")
 

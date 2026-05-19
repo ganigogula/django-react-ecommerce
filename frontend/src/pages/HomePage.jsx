@@ -29,13 +29,16 @@ function HomePage() {
 
     try {
 
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/products/"
-      )
+      const response = await axios.get("http://127.0.0.1:8000/api/products/")
+      
 
       console.log(response.data)
 
-      setProducts(response.data)
+      setProducts(
+        Array.isArray(response.data)
+          ? response.data
+          : []
+      )
 
       setLoading(false)
 
@@ -72,11 +75,6 @@ function HomePage() {
 
     setCartItems(updatedCart)
 
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(updatedCart)
-    )
-
     alert("Product Added To Cart")
 
   }
@@ -103,7 +101,6 @@ function HomePage() {
     )
 
   }
-
   const filteredProducts = products
 
     .filter((product) =>
@@ -120,9 +117,7 @@ function HomePage() {
 
       ||
 
-      product.title
-        .toLowerCase()
-        .includes(selectedCategory.toLowerCase())
+      product.title === selectedCategory
 
     )
 
@@ -208,18 +203,9 @@ function HomePage() {
             Camera
           </option>
 
-          <option value="Headphones">
-            Headphones
-          </option>
-
-          <option value="Shoes">
-            Shoes
-          </option>
-
         </select>
 
       </div>
-
       {
         filteredProducts.length === 0 && (
 
@@ -276,7 +262,7 @@ function HomePage() {
 
               <img
 
-                src={`http://127.0.0.1:8000${product.image}`}
+              src={`http://127.0.0.1:8000${product.image}`}
 
                 alt={product.title}
 
@@ -288,6 +274,8 @@ function HomePage() {
                 }}
 
               />
+
+
 
               <h2>{product.title}</h2>
 
