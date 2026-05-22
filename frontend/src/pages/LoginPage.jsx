@@ -44,7 +44,7 @@ function LoginPage() {
 
         } catch (error) {
 
-            console.log(error)
+            console.log(error.response.data)
 
             alert("Invalid Credentials")
 
