@@ -20,7 +20,7 @@ function LoginPage() {
 
             const response = await axios.post(
 
-                "http://127.0.0.1:8000/api/users/login/",
+               "https://django-react-ecommerce-0h1f.onrender.com/api/users/login/",
 
                 {
                     username: username,

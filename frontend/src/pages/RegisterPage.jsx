@@ -14,7 +14,7 @@ function RegisterPage() {
 
             const response = await axios.post(
 
-                "http://127.0.0.1:8000/api/users/register/",
+               "https://django-react-ecommerce-0h1f.onrender.com/api/users/register/",
 
                 {
                     username: username,
