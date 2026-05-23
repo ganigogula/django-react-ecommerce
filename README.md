@@ -1,6 +1,6 @@
 # Django React Ecommerce
 
-Modern full stack ecommerce web application built using React, Django REST Framework, JWT authentication, and SQLite.
+Modern full-stack ecommerce web application built using React, Django REST Framework, JWT Authentication, and SQLite.
 
 ---
 
@@ -12,7 +12,7 @@ Modern full stack ecommerce web application built using React, Django REST Frame
 * Product Listing
 * Product Details Page
 * Search Products
-* Category Filter
+* Category Filtering
 * Add To Cart
 * Cart Quantity Management
 * Checkout System
@@ -30,6 +30,7 @@ Modern full stack ecommerce web application built using React, Django REST Frame
 * React Router DOM
 * Axios
 * Context API
+* CSS
 
 ## Backend
 
@@ -40,11 +41,30 @@ Modern full stack ecommerce web application built using React, Django REST Frame
 
 ---
 
+# Project Architecture
+
+```text
+React Frontend
+       ↓
+Axios API Requests
+       ↓
+Django REST API
+       ↓
+SQLite Database
+```
+
+---
+
 # Project Structure
 
-```bash
-frontend/
-backend/
+```text
+django-react-ecommerce/
+│
+├── frontend/
+│
+├── backend/
+│
+└── README.md
 ```
 
 ---
@@ -54,7 +74,7 @@ backend/
 ## Clone Repository
 
 ```bash
-https://github.com/ganigogula/django-react-ecommerce.git
+git clone https://github.com/ganigogula/django-react-ecommerce.git
 ```
 
 ---
@@ -70,7 +90,7 @@ cd backend
 ## Install dependencies
 
 ```bash
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Run migrations
@@ -88,7 +108,7 @@ python manage.py runserver
 Backend runs on:
 
 ```text
-/api/products/
+http://127.0.0.1:8000
 ```
 
 ---
@@ -140,8 +160,8 @@ http://localhost:5173
 ## Orders
 
 ```text
-/api/orders/create/
 /api/orders/
+/api/orders/create/
 ```
 
 ---
@@ -150,18 +170,7 @@ http://localhost:5173
 
 * JWT Token Authentication
 * Protected Routes
-* Login Required for Checkout and Orders
-
----
-
-# Future Improvements
-
-* Online Payments
-* Product Reviews
-* Wishlist
-* Admin Dashboard
-* Product Categories from Database
-* Order Tracking
+* Login Required for Orders and Checkout
 
 ---
 
@@ -177,7 +186,17 @@ http://localhost:5173
 
 ---
 
+# Future Improvements
+
+* Online Payments
+* Product Reviews
+* Wishlist
+* Admin Dashboard
+* Product Categories from Database
+* Order Tracking
+
+---
+
 # Author
 
 Ganesh Gogula
-
