@@ -148,14 +148,14 @@ function CartPage() {
                         >
 
                             <img
-                                src={`http://127.0.0.1:8000${item.image}`}
-                                alt={item.title}
-                                style={{
-                                    width: "200px",
-                                    height: "200px",
-                                    objectFit: "cover"
-                                }}
-                            />
+    src={`https://django-react-ecommerce-0h1f.onrender.com${item.image}`}
+    alt={item.title}
+    style={{
+        width: "200px",
+        height: "200px",
+        objectFit: "cover"
+    }}
+/>
 
                             <h2>{item.title}</h2>
 

@@ -112,7 +112,7 @@ python manage.py runserver
 Backend runs on:
 
 ```text
-http://127.0.0.1:8000
+https://django-react-ecommerce-0h1f.onrender.com
 ```
 
 ---
