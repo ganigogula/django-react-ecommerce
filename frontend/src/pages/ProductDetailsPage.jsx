@@ -108,19 +108,14 @@ function ProductDetailsPage() {
                 }}
 
             >
-
                 <img
-                    src={`/media/${product.image}`}
+                    src={`https://django-react-ecommerce-0h1f.onrender.com${product.image}`}
                     alt={product.title}
-
-
                     style={{
                         width: "400px",
                         borderRadius: "10px"
                     }}
-
                 />
-
                 <div>
 
                     <h1>{product.title}</h1>

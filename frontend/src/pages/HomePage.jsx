@@ -260,20 +260,16 @@ function HomePage() {
 
             >
 
-              <img
-
-              src={`http://127.0.0.1:8000${product.image}`}
-
-                alt={product.title}
-
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "10px"
-                }}
-
-              />
+            <img
+  src={`https://django-react-ecommerce-0h1f.onrender.com${product.image}`}
+  alt={product.title}
+  style={{
+    width: "100%",
+    height: "200px",
+    objectFit: "cover",
+    borderRadius: "10px"
+  }}
+/>
 
 
 
